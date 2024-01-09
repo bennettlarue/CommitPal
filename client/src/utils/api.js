@@ -1,5 +1,6 @@
 import axios from "axios";
 const CLIENT_ID = "7107eaeb61258e70aab9";
+const CONNECTION_URL = "https://commitpal.onrender.com";
 
 export const loginWithGithub = () => {
     window.location.assign(
@@ -13,7 +14,7 @@ export const loginWithGithub = () => {
     - repoName : name of the repo to get commits from.
 */
 export const createUser = async (id) => {
-    return await fetch(`http://localhost:3001/user/${id}`, {
+    return await fetch(`${CONNECTION_URL}/user/${id}`, {
         method: "POST",
         headers: {
             Authorization: `token ${localStorage.getItem("accessToken")}`,
@@ -28,7 +29,7 @@ export const createUser = async (id) => {
 };
 
 export const getUserById = async (id) => {
-    return await fetch(`http://localhost:3001/user/${id}`, {
+    return await fetch(`${CONNECTION_URL}/user/${id}`, {
         method: "GET",
         headers: {
             Authorization: `token ${localStorage.getItem("accessToken")}`,
@@ -43,7 +44,7 @@ export const getUserById = async (id) => {
 };
 
 export const addPoints = async (id, pointsToAdd) => {
-    fetch(`http://localhost:3001/user/${id}/addPoints`, {
+    fetch(`${CONNECTION_URL}/user/${id}/addPoints`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -60,7 +61,7 @@ export const addPoints = async (id, pointsToAdd) => {
 */
 export const getUserData = async () => {
     let returnData = {};
-    await fetch("http://localhost:3001/user/getUserData", {
+    await fetch(`${CONNECTION_URL}/user/getUserData`, {
         method: "GET",
         headers: {
             Authorization: `token ${localStorage.getItem("accessToken")}`,
@@ -79,7 +80,7 @@ export const getUserData = async () => {
  Function to get all public repos on the users account from the backend.
 */
 export const getRepos = async () => {
-    return await fetch("http://localhost:3001/user/getRepos", {
+    return await fetch(`${CONNECTION_URL}/user/getRepos`, {
         method: "GET",
         headers: {
             Authorization: `token ${localStorage.getItem("accessToken")}`,
@@ -99,7 +100,7 @@ export const getRepos = async () => {
     - repoName : name of the repo to get commits from.
 */
 export const getCommitsInRepo = async (repoName, userId) => {
-    return await fetch(`http://localhost:3001/user/getCommits/${repoName}`, {
+    return await fetch(`${CONNECTION_URL}/user/getCommits/${repoName}`, {
         method: "GET",
         headers: {
             Authorization: `token ${localStorage.getItem("accessToken")}`,
@@ -127,7 +128,7 @@ export const getCommitsInRepo = async (repoName, userId) => {
  Function to fetch all commits a user has made in any repo from the sever backend. 
 */
 export const getCommits = async (userId) => {
-    return await fetch("http://localhost:3001/user/getCommits", {
+    return await fetch(`${CONNECTION_URL}/user/getCommits`, {
         method: "GET",
         headers: {
             Authorization: `token ${localStorage.getItem("accessToken")}`,
@@ -248,7 +249,7 @@ export const getCommitsInRange = (commits, sDate, eDate) => {
 export const handleDelete = async (postId, handleRerender) => {
     try {
         const response = await axios.delete(
-            `http://localhost:3001/goals/${postId}`
+            `${CONNECTION_URL}/goals/${postId}`
         );
         console.log(response.data);
         handleRerender();

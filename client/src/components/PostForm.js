@@ -4,6 +4,8 @@ import DatePicker from "./DatePicker.js";
 import { getRepos } from "../utils/api.js";
 
 const PostForm = ({ onClose, userId, handleRerender, selectedGoal }) => {
+    const CONNECTION_URL = "https://commitpal.onrender.com";
+
     const [repositories, setRepositories] = useState([]);
     const [showCommitsError, setShowCommitsError] = useState(false);
     const [showRepoError, setShowRepoError] = useState(false);
@@ -66,7 +68,7 @@ const PostForm = ({ onClose, userId, handleRerender, selectedGoal }) => {
 
             try {
                 const response = await axios.post(
-                    "http://localhost:3001/goals/createGoal",
+                    `${CONNECTION_URL}/goals/createGoal`,
                     newGoalData
                 );
                 setGoalData({
@@ -97,7 +99,7 @@ const PostForm = ({ onClose, userId, handleRerender, selectedGoal }) => {
 
             try {
                 const response = await axios.put(
-                    `http://localhost:3001/goals/${selectedGoal._id}`,
+                    `${CONNECTION_URL}/goals/${selectedGoal._id}`,
                     newGoalData
                 );
                 setGoalData({

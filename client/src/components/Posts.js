@@ -9,6 +9,8 @@ import { getCommitsInRepo, getRepos, getCommitsInRange } from "../utils/api";
 
 // Posts component to display and manage user's commit goals
 const Posts = ({ userId, rerender, handleRerender }) => {
+    const CONNECTION_URL = "https://commitpal.onrender.com";
+
     // State variables to manage goals, commits, repositories, and UI elements
     const [goals, setGoals] = useState([]);
     const [commitsCompleted, setCommitsCompleted] = useState({});
@@ -27,7 +29,7 @@ const Posts = ({ userId, rerender, handleRerender }) => {
 
                 // Fetch all of the users goals and store the in a state
                 const response = await axios.get(
-                    `http://localhost:3001/goals/${userId}`
+                    `${CONNECTION_URL}/goals/${userId}`
                 );
                 setGoals(response.data);
 
@@ -72,7 +74,7 @@ const Posts = ({ userId, rerender, handleRerender }) => {
                         //const newGoalData = { ...goal, status: newStatus };
                         const newGoalData = { ...goal };
                         await axios.put(
-                            `http://localhost:3001/goals/${goal._id}`,
+                            `${CONNECTION_URL}/goals/${goal._id}`,
                             newGoalData
                         );
                     })

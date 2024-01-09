@@ -9,6 +9,9 @@ import {
 } from "./utils/api";
 
 function App() {
+    // Server URL
+    const CONNECTION_URL = "https://commitpal.onrender.com/";
+
     // State variables to manage the app's data and re-rendering.
     const [rerender, setRerender] = useState(false);
     const [userData, setUserData] = useState({});
@@ -23,11 +26,10 @@ function App() {
             const codeParam = urlParams.get("code");
 
             // If the code parameter is present and there's no access token, fetch it.
-            // TODO: Change localhost to wherever code will be hosted.
             if (codeParam && localStorage.getItem("accessToken") === null) {
                 try {
                     const response = await fetch(
-                        `http://localhost:3001/user/getAccessToken?code=${codeParam}`,
+                        `${CONNECTION_URL}/user/getAccessToken?code=${codeParam}`,
                         { method: "GET" }
                     );
                     const data = await response.json();
