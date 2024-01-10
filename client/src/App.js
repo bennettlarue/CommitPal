@@ -10,7 +10,7 @@ import {
 
 function App() {
     // Server URL
-    const CONNECTION_URL = "https://commitpal.onrender.com/";
+    const CONNECTION_URL = "https://commitpal.onrender.com";
 
     // State variables to manage the app's data and re-rendering.
     const [rerender, setRerender] = useState(false);
