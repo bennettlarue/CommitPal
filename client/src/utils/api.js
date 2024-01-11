@@ -2,6 +2,9 @@ import axios from "axios";
 const CLIENT_ID = "7107eaeb61258e70aab9";
 const CONNECTION_URL = "https://commitclipstest.onrender.com";
 
+/*
+ Function to get access token for GitHub API.
+*/
 export const loginWithGithub = () => {
     window.location.assign(
         `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}`
@@ -28,6 +31,11 @@ export const createUser = async (id) => {
         });
 };
 
+/*
+ Function to retrieve user data from MongoDB based on their ID.
+ Params:
+    - id : The user's ID, taken from their GitHub user ID. 
+*/
 export const getUserById = async (id) => {
     return await fetch(`${CONNECTION_URL}/user/${id}`, {
         method: "GET",
@@ -43,6 +51,12 @@ export const getUserById = async (id) => {
         });
 };
 
+/*
+ Function to add points to a user's score.
+ Params:
+    - id : The user's ID, taken from their GitHub user ID. 
+    - pointsToAdd : Number of points to add.
+*/
 export const addPoints = async (id, pointsToAdd) => {
     fetch(`${CONNECTION_URL}/user/${id}/addPoints`, {
         method: "POST",
