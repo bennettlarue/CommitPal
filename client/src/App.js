@@ -8,24 +8,9 @@ import {
     loginWithGithub,
 } from "./utils/api";
 
-async function fetchGreeting(url) {
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const text = await response.text();
-        console.log(text); // Logs "Hello from homepage!"
-        return text;
-    } catch (error) {
-        console.error("Error fetching greeting:", error);
-    }
-}
-
 function App() {
     // Server URL
     const CONNECTION_URL = "https://commitclipstest.onrender.com";
-    fetchGreeting(CONNECTION_URL);
 
     // State variables to manage the app's data and re-rendering.
     const [rerender, setRerender] = useState(false);
@@ -70,8 +55,6 @@ function App() {
                 // Get user's score from database.
                 const scoreData = await getUserById(githubData.id);
                 setUserScore(scoreData.points);
-                //console.log("User Score:");
-                //addPoints(githubData.id, 100);
             } catch (error) {
                 console.log(error);
             }

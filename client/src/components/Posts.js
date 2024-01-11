@@ -70,9 +70,7 @@ const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
                         else newStatus = "active";
 
                         // Updating the goal with the new status
-                        // Commenting out so that I modify database values.
-                        //const newGoalData = { ...goal, status: newStatus };
-                        const newGoalData = { ...goal };
+                        const newGoalData = { ...goal, status: newStatus };
                         await axios.put(
                             `${CONNECTION_URL}/goals/${goal._id}`,
                             newGoalData

@@ -1,6 +1,6 @@
 import axios from "axios";
 const CLIENT_ID = "7107eaeb61258e70aab9";
-const CONNECTION_URL = "https://commitpal.onrender.com";
+const CONNECTION_URL = "https://commitclipstest.onrender.com";
 
 export const loginWithGithub = () => {
     window.location.assign(

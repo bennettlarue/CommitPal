@@ -8,7 +8,6 @@ const DatePicker = ({ handleDateChange }) => {
     const onDateChange = (newDate) => {
         setDate(newDate);
         handleDateChange(newDate);
-        //console.log(newDate);
     };
     return (
         <Calendar
