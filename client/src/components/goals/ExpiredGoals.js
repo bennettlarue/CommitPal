@@ -1,6 +1,8 @@
 import React from "react";
 import { handleDelete, formatDateString } from "../../utils/api";
 
+/* This component displays a list of all goals that currently have the status "expired". */
+
 const ExpiredGoals = ({
     repositories,
     goals,

@@ -76,9 +76,11 @@ function App() {
                 <NavBar userData={userData} onRerender={handleRerender} />
             </header>
 
+            {/* Conditionally rendering, based on whether the user is logged in.*/}
             {localStorage.getItem("accessToken") ? (
                 <>
                     <div className="p-2 mb-2">
+                        {/* ScoreInfo component to display user's current score. */}
                         <ScoreInfo
                             userScore={userScore}
                             onRerender={handleRerender}
@@ -86,7 +88,7 @@ function App() {
                     </div>
 
                     <div className="p-2">
-                        {/* Posts component to display user's posts */}
+                        {/* Posts component to display user's goals */}
                         <Posts
                             userId={userData.id}
                             rerender={rerender}
@@ -97,6 +99,7 @@ function App() {
                 </>
             ) : (
                 <>
+                    {/* Login button displays if not logged in. */}
                     <div className="flex justify-center items-center m-5 mt-7">
                         <button
                             className="text-3xl font-bold p-7 rounded-lg bg-primaryDark hover:bg-secondaryBlue text-whiteDark shadow-lg ring-2 ring-blueDark duration-200 transform"

@@ -1,5 +1,7 @@
 import React from "react";
-import { handleDelete, formatDateString, addPoints } from "../../utils/api";
+import { handleDelete, addPoints } from "../../utils/api";
+
+/* This component displays a list of all goals that currently have the status "completed". */
 
 const CompletedGoals = ({
     repositories,

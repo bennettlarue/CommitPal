@@ -1,4 +1,3 @@
-// Importing necessary modules and components
 import React, { useEffect, useState } from "react";
 import GoalPopup from "./GoalPopup";
 import CompletedGoals from "./goals/CompletedGoals";
@@ -7,10 +6,9 @@ import ExpiredGoals from "./goals/ExpiredGoals";
 import axios from "axios";
 import { getCommitsInRepo, getRepos, getCommitsInRange } from "../utils/api";
 
-// Posts component to display and manage user's commit goals
-const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
-    //const CONNECTION_URL = "https://commitpal.onrender.com";
+/* Component responsible for rendering all goals, as well as the popup for creating or editing a goal. */
 
+const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
     // State variables to manage goals, commits, repositories, and UI elements
     const [goals, setGoals] = useState([]);
     const [commitsCompleted, setCommitsCompleted] = useState({});
@@ -124,6 +122,8 @@ const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
                 )}
             </div>
             <div>
+                {/* Rendering active goals*/}
+                {/* Display a message if there are no active goals. */}
                 <div className="border-b-4 border-secondaryDark">
                     <div className="px-8 py-5">
                         <div className="p-1 mb-1.5">
@@ -149,6 +149,8 @@ const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
                     </div>
                 </div>
 
+                {/* Rendering completed goals*/}
+                {/* Only appears if there is at least one completed goal. */}
                 {goals.filter((goal) => goal.status === "completed").length >
                     0 && (
                     <>
@@ -171,6 +173,8 @@ const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
                     </>
                 )}
 
+                {/* Rendering expired goals*/}
+                {/* Only appears if there is at least one expired goal. */}
                 {goals.filter((goal) => goal.status === "expired").length >
                     0 && (
                     <>
