@@ -8,9 +8,24 @@ import {
     loginWithGithub,
 } from "./utils/api";
 
+async function fetchGreeting(url) {
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        const text = await response.text();
+        console.log(text); // Logs "Hello from homepage!"
+        return text;
+    } catch (error) {
+        console.error("Error fetching greeting:", error);
+    }
+}
+
 function App() {
     // Server URL
-    const CONNECTION_URL = "https://commitpal.onrender.com";
+    const CONNECTION_URL = "https://commitclipstest.onrender.com";
+    fetchGreeting(CONNECTION_URL);
 
     // State variables to manage the app's data and re-rendering.
     const [rerender, setRerender] = useState(false);
@@ -24,6 +39,7 @@ function App() {
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
             const codeParam = urlParams.get("code");
+            console.log("Code Param: " + codeParam);
 
             // If the code parameter is present and there's no access token, fetch it.
             if (codeParam && localStorage.getItem("accessToken") === null) {
@@ -33,6 +49,7 @@ function App() {
                         { method: "GET" }
                     );
                     const data = await response.json();
+                    console.log(data);
 
                     // Store the access token in local storage and trigger a re-render.
                     if (data.access_token) {
@@ -91,12 +108,13 @@ function App() {
                             userId={userData.id}
                             rerender={rerender}
                             handleRerender={handleRerender}
+                            CONNECTION_URL={CONNECTION_URL}
                         />
                     </div>
                 </>
             ) : (
                 <>
-                    <div class="flex justify-center items-center m-5 mt-7">
+                    <div className="flex justify-center items-center m-5 mt-7">
                         <button
                             className="text-3xl font-bold p-7 rounded-lg bg-primaryDark hover:bg-secondaryBlue text-whiteDark shadow-lg ring-2 ring-blueDark duration-200 transform"
                             onClick={() => {

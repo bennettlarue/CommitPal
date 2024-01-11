@@ -8,8 +8,8 @@ import axios from "axios";
 import { getCommitsInRepo, getRepos, getCommitsInRange } from "../utils/api";
 
 // Posts component to display and manage user's commit goals
-const Posts = ({ userId, rerender, handleRerender }) => {
-    const CONNECTION_URL = "https://commitpal.onrender.com";
+const Posts = ({ userId, rerender, handleRerender, CONNECTION_URL }) => {
+    //const CONNECTION_URL = "https://commitpal.onrender.com";
 
     // State variables to manage goals, commits, repositories, and UI elements
     const [goals, setGoals] = useState([]);
@@ -121,6 +121,7 @@ const Posts = ({ userId, rerender, handleRerender }) => {
                         userId={userId}
                         handleRerender={handleRerender}
                         selectedGoal={selectedGoal}
+                        CONNECTION_URL={CONNECTION_URL}
                     />
                 )}
             </div>

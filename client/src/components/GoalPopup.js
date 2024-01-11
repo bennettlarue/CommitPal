@@ -7,6 +7,7 @@ const GoalPopup = ({
     userId,
     handleRerender,
     selectedGoal,
+    CONNECTION_URL,
 }) => {
     return (
         <div>
@@ -27,6 +28,7 @@ const GoalPopup = ({
                             handleRerender={handleRerender}
                             onClose={onClose}
                             selectedGoal={selectedGoal}
+                            CONNECTION_URL={CONNECTION_URL}
                         />
                     </div>
 

@@ -3,8 +3,14 @@ import axios from "axios";
 import DatePicker from "./DatePicker.js";
 import { getRepos } from "../utils/api.js";
 
-const PostForm = ({ onClose, userId, handleRerender, selectedGoal }) => {
-    const CONNECTION_URL = "https://commitpal.onrender.com";
+const PostForm = ({
+    onClose,
+    userId,
+    handleRerender,
+    selectedGoal,
+    CONNECTION_URL,
+}) => {
+    //const CONNECTION_URL = "https://commitpal.onrender.com";
 
     const [repositories, setRepositories] = useState([]);
     const [showCommitsError, setShowCommitsError] = useState(false);
